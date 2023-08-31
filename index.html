@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #question {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #yes-button, #no-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            position: absolute;
+        }
+        #yes-button {
+            left: 30%; /* Adjust the initial left position */
+        }
+        #no-button {
+            left: 70%; /* Adjust the initial left position */
+            z-index: 1; /* Set a higher z-index for the "No" button */
+        }
+    </style>
+</head>
+<body>
+    <div id="question">Are you gay?</div>
+    <div class="button-container">
+        <button id="yes-button" onmouseover="motionMouse()" onclick="yes()">Yes</button>
+        <button id="no-button">No</button>
+    </div>
+
+    <script>
+        var noButtonClicked = false;
+
+        // Function to move the "No" button randomly
+        function moveNoButton() {
+            if (!noButtonClicked) {
+                var noButton = document.getElementById("no-button");
+                var maxX = window.innerWidth - noButton.clientWidth;
+                var maxY = window.innerHeight - noButton.clientHeight;
+                var randomX = Math.floor(Math.random() * maxX);
+                var randomY = Math.floor(Math.random() * maxY);
+                noButton.style.left = randomX + "px";
+                noButton.style.top = randomY + "px";
+            }
+        }
+
+        // Add an event listener to the "No" button for mouseover
+        var noButton = document.getElementById("no-button");
+        noButton.addEventListener("mouseover", moveNoButton);
+
+        function yes() {
+            alert('HAHAHAHAHA');
+        }
+    </script>
+</body>
+</html>
